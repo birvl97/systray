@@ -226,9 +226,6 @@ int nativeLoop(char* title, int width, int height) {
  @catch (NSException * e) {
     NSLog(@"Exception: %@", e);
  }
- @finally {
-    NSLog(@"finally");
- }
 
   return EXIT_SUCCESS;
 }

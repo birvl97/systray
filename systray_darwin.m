@@ -215,12 +215,21 @@ NSMenuItem *find_menu_item(NSMenu *ourMenu, NSNumber *menuId) {
 @end
 
 int nativeLoop(char* title, int width, int height) {
-  AppDelegate *delegate = [[AppDelegate alloc] init];
-  [[NSApplication sharedApplication] setDelegate:delegate];
-  if (strcmp(title, "") != 0) {
-    configureAppWindow(title, width, height);
-  }
-  [NSApp run];
+ @try {
+    AppDelegate *delegate = [[AppDelegate alloc] init];
+      [[NSApplication sharedApplication] setDelegate:delegate];
+      if (strcmp(title, "") != 0) {
+        configureAppWindow(title, width, height);
+      }
+      [NSApp run];
+ }
+ @catch (NSException * e) {
+    NSLog(@"Exception: %@", e);
+ }
+ @finally {
+    NSLog(@"finally");
+ }
+
   return EXIT_SUCCESS;
 }
 
